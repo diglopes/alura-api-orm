@@ -1,0 +1,30 @@
+{
+  "name": "alura-api-orm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diglopes/alura-api-orm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diglopes/alura-api-orm/issues"
+  },
+  "homepage": "https://github.com/diglopes/alura-api-orm#readme",
+  "dependencies": {
+    "express": "4.17.1",
+    "mysql2": "2.2.5",
+    "sequelize": "6.5.0",
+    "sequelize-cli": "6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.7"
+  }
+}
