@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "curso_nodejs_orm",
-    "password": "alura",
+    "username": "root",
+    "password": "mysql",
     "database": "escola_ingles",
     "host": "127.0.0.1",
     "dialect": "mysql"
