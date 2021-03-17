@@ -29,6 +29,31 @@ class PeopleController {
       return res.status(500).json({ msg: error.message });
     }
   }
+
+  static async updatePeople(req, res) {
+    try {
+      const { id } = req.params
+      const newData = req.body
+      await req.db.People.update(newData, { where: { id }})
+      return res
+        .status(204)
+        .end()
+    } catch(error) { 
+      return res.status(500).json({ msg: error.message });
+    }
+  }
+
+  static async removePeople(req, res) {
+    try {
+      const { id } = req.params
+      await req.db.People.destroy({ where: { id }})
+      return res
+        .status(204)
+        .end()
+    } catch(error) { 
+      return res.status(500).json({ msg: error.message });
+    }
+  }
 }
 
 module.exports = PeopleController;
