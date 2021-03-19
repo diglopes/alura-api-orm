@@ -54,6 +54,34 @@ class PeopleController {
       return res.status(500).json({ msg: error.message });
     }
   }
+
+  static async getAllEnrollments (req, res) {
+    try {
+      const { id } = req.params
+      const enrollments = await req.db.Enrollments.findAll({ where: { estudante_id: id }})
+      return res.send(JSON.stringify(enrollments))
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  }
+
+  static async enroll(req, res) {
+    try {
+      const { id } = req.params
+      const { turma_id } = req.body
+      const newEnrollment = {
+        status: "Confirmado",
+        estudante_id: id,
+        turma_id
+      }
+      const enrollmentCreated = await req.db.Enrollments.create(newEnrollment)
+      return res
+        .status(201)
+        .send(enrollmentCreated)
+    } catch(error) { 
+      return res.status(500).json({ msg: error.message });
+    }
+  }
 }
 
 module.exports = PeopleController;
