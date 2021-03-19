@@ -3,24 +3,30 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Niveis extends Model {
+  class Classes extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Niveis.hasMany(models.Classes, {
+      Classes.hasMany(models.Enrollments, {
+        foreignKey: 'turma_id'
+      })
+      Classes.belongsTo(models.People, {
+        foreignKey: 'docente_id'
+      })
+      Classes.belongsTo(models.Levels, {
         foreignKey: 'nivel_id'
       })
     }
   };
-  Niveis.init({
-    descr_nivel: DataTypes.STRING
+  Classes.init({
+    data_inicio: DataTypes.DATEONLY
   }, {
     sequelize,
-    modelName: 'Levels',
-    tableName: 'Niveis'
+    modelName: 'Classes',
+    tableName: 'Turmas'
   });
-  return Niveis;
+  return Classes;
 };
